@@ -1,0 +1,101 @@
+<!--Tutorial #5 - Variables: Challenge-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator Challenge</title>
+    <style>
+      div{
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button onclick = "
+        userInput += 1;
+        console.log(userInput);
+      ">1</button>
+      <button onclick = "
+        userInput += 2;
+        console.log(userInput);
+      ">2</button>
+      <button onclick = "
+        userInput += 3;
+        console.log(userInput);
+      ">3</button>
+      <button onclick = "
+        userInput += ' + ';
+        console.log(userInput);
+      ">+</button>
+    </div>
+
+    <div>
+      <button onclick = "
+        userInput += 4;
+        console.log(userInput);
+      ">4</button>
+      <button onclick = "
+        userInput += 5;
+        console.log(userInput);
+      ">5</button>
+      <button onclick = "
+        userInput += 6;
+        console.log(userInput);
+      ">6</button>
+      <button onclick = "
+      userInput += ' - ';
+      console.log(userInput);
+    ">-</button>
+    </div>
+
+    <div>
+      <button onclick = "
+        userInput += 7;
+        console.log(userInput);
+      ">7</button>
+      <button onclick = "
+        userInput += 8;
+        console.log(userInput);
+      ">8</button>
+      <button onclick = "
+        userInput += 9;
+        console.log(userInput);
+      ">9</button>
+      <button onclick = "
+      userInput += ' * ';
+      console.log(userInput);
+    ">*</button>
+    </div>
+
+    <div>
+      <button onclick = "
+        userInput += 0;
+        console.log(userInput);
+      ">0</button>
+      <button onclick = "
+        userInput += ' . ';
+        console.log(userInput);
+      ">.</button>
+      <button onclick = "
+        userInput = eval(userInput);
+        console.log(userInput);
+      ">=</button>
+      <button onclick = "
+        userInput += ' / ';
+        console.log(userInput);
+      ">/</button>
+    </div>
+
+    <div>
+      <button onclick = "
+          userInput = '';
+          console.log('Cleared.');
+        ">Clear</button>
+    </div>
+
+    <script>
+      let userInput = '';
+    </script>
+
+  </body>
+</html>

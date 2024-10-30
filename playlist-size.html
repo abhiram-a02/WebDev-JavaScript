@@ -1,0 +1,54 @@
+<!--Tutorial #5 - Variables: Projects-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Playlist Size - Project</title>
+  </head>
+  <body>
+    <button style = "display: block" onclick = "
+      console.log(`Playlist Size: ${playlistSize}`);
+    ">Show Size</button>
+
+    <button onclick = "
+      playlistSize++;
+    ">Add to Playlist</button>
+    
+    <button onclick = "
+      playlistSize += 2;
+    ">+2</button>
+    
+    <button onclick = "
+      playlistSize += 3;
+    ">+3</button>
+
+    <button onclick = "
+      playlistSize += 4;
+    ">+4</button>
+
+    <button onclick = "
+      playlistSize += 5;
+    ">+5</button><br>
+
+    <button onclick = "
+      playlistSize--;
+    ">Remove from Playlist</button>
+
+    <button onclick = "
+      playlistSize -= 2;
+    ">-2</button>
+
+    <button onclick = "
+      playlistSize -= 3;
+    ">-3</button>
+
+    <button style = "display: block" onclick = "
+      playlistSize = 0;
+      console.log('Playlist was reset.');
+      console.log(`Playlist Size: ${playlistSize}`);
+    ">Reset Playlist</button>
+    
+    <script>
+      let playlistSize = 0;
+    </script>
+  </body>
+</html>
