@@ -10,35 +10,67 @@
     ">Show Size</button>
 
     <button onclick = "
-      playlistSize++;
+      if(playlistSize + 1 > 10){
+        alert('Playlist is Full.')
+      }else{
+        playlistSize++;
+      }
     ">Add to Playlist</button>
     
     <button onclick = "
-      playlistSize += 2;
+      if(playlistSize + 2 > 10){
+        alert('Playlist is Full.')
+      }else{
+        playlistSize += 2;
+      }
     ">+2</button>
     
     <button onclick = "
-      playlistSize += 3;
+      if(playlistSize + 3 > 10){
+        alert('Playlist is Full.')
+      }else{
+        playlistSize += 3;
+      }
     ">+3</button>
 
     <button onclick = "
-      playlistSize += 4;
+      if(playlistSize + 4 > 10){
+        alert('Playlist is Full.')
+      }else{
+        playlistSize += 4;
+      }
     ">+4</button>
 
     <button onclick = "
-      playlistSize += 5;
+      if(playlistSize + 5 > 10){
+        alert('Playlist is Full.')
+      }else{
+        playlistSize += 5;
+      }
     ">+5</button><br>
 
     <button onclick = "
-      playlistSize--;
+      if(playlistSize - 1 < 0){
+        alert('Playlist is Empty.')
+      }else{
+        playlistSize--;
+      }
     ">Remove from Playlist</button>
 
     <button onclick = "
-      playlistSize -= 2;
+      if(playlistSize - 2 < 0){
+        alert('Playlist is Empty.')
+      }else{
+        playlistSize -= 2;
+      }
     ">-2</button>
 
     <button onclick = "
-      playlistSize -= 3;
+      if(playlistSize - 3 < 0){
+        alert('Playlist is Empty.')
+      }else{
+        playlistSize -= 3;
+      }
     ">-3</button>
 
     <button style = "display: block" onclick = "
