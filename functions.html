@@ -1,0 +1,73 @@
+<!--Tutorial #6 - Functions: Exercise-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Functions</title>
+  </head>
+  <body>
+    <script>
+      function greet(name){
+        if(!name){
+          console.log('Hi there!');
+        }else{
+          console.log(`Hello ${name}!`);
+        }
+      }
+
+      /*
+      function convertToFahrenheit(Celcius){return (Celcius * 9/5) + 32;}
+      function convertToCelcius(Fahrenheit){return (Fahrenheit - 32) * 5/9;}
+      */
+
+      function convertTemp(degrees, units){
+        if(units === 'C'){
+          return (degrees * 9/5) + 32;
+        }else if(units === 'F'){
+          return (degrees - 32) * 5/9;
+        }else{
+          return 'Cannot Convert.';
+        }
+      }
+
+      function convertLength(length, from, to){
+        if(from === 'km'){
+          if(to === 'mile'){
+            return length / 1.6;
+          }else if(to === 'feet'){
+            return length * 3281;
+          }else{
+          return `invalid conversion ${from} to ${to}.`;
+          }
+        }else if(from === 'mile'){
+          if(to === 'km'){
+            return length * 1.6;
+          }else if(to === 'feet'){
+            return length * 5280;
+          }else{
+          return `invalid conversion ${from} to ${to}.`;
+          }
+        }else if(from === 'feet'){
+          if(to === 'mile'){
+            return length / 5280;
+          }else if(to === 'km'){
+            return length / 3281;
+          }else{
+          return `invalid conversion ${from} to ${to}.`;
+          }
+        }else{
+          return `invalid conversion ${from} to ${to}.`;
+        }
+      }
+
+      greet('Abhiram');
+      greet('John');
+      greet('Simon');
+      greet();
+
+      console.log(convertTemp(25, 'C'));
+      console.log(convertTemp(86, 'F'));
+
+      console.log(convertLength(5, 'feet', 'lbs'));
+    </script>
+  </body>
+</html>
