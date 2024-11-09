@@ -54,6 +54,7 @@
       console.log(JSON.parse(jsonString));
       */
 
+      /*
       console.log('hello'.length);
       console.log('hello'.toUpperCase());
 
@@ -86,17 +87,52 @@
       const obj5 = {
         // message: message
         message,
-        /*
-        method: function f1(){
-          console.log('method');
-        }
-        */
         method(){
           console.log('method')
         }
       }
       console.log(message);
       obj5.method();
+      */
+
+      const product1 = {
+        name: 'basketball',
+        price: 2905
+      };
+      
+      product1.price += 500;
+
+      product1['delivery-time'] = '3 days';
+      console.log(product1);
+
+      const product2 = {name: 'Baccarat Rouge 450 - EAU', price: 210};
+      const product3 = {name: 'Oud Satin Mood - EAU', price: 200};
+      
+      function comparePrice(p1, p2){
+        if(p1.price < p2.price){
+          return p1;
+        }else if(p2.price < p1.price){
+          return p2;
+        }else{
+          return 'Equally Expensive';
+        }
+      }
+      console.log(comparePrice(product2, product3));
+
+      function isSameProduct(p1, p2){
+        if(p1.name === p2.name && p1.price === p2.price){
+          return true;
+        }else{
+          return false;
+        }
+      }
+      console.log(isSameProduct(product2, product3));
+
+      let brandName1 = 'Stussy';
+      console.log(brandName1.toUpperCase());
+
+      let brandName2 = 'Supreme';
+      console.log(brandName2.repeat(3));
     </script>
   </body>
 </html>
