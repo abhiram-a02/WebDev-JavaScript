@@ -1,0 +1,23 @@
+<!--Tutorial #9 - Document Object Model: Subscribe & Shipping Project-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Document Object Model Projects</title>
+  </head>
+  <body>
+    <p>Youtube Subscribe Button</p>
+    <button onclick = "
+      subscribe();
+    " class = "js-subscribe-button">Subscribe</button>
+    <script>
+      function subscribe(){
+        const buttonElement = document.querySelector('.js-subscribe-button');
+        if(buttonElement.innerText === 'Subscribe'){
+          buttonElement.innerHTML = 'Subscribed';
+        }else{
+          buttonElement.innerHTML = 'Subscribe';
+        }
+      }
+    </script>
+  </body>
+</html>
