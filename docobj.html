@@ -4,15 +4,63 @@
   <head>
     <title>Document Object Model</title>
   </head>
-  <body>
+  <body style = 'background-color: black;'>
+    <!--
     <button>Hello</button>
     <button class = "js-button">Second Button</button>
+    -->
+
+    <button>9a</button>
+    <button class = "b2">9b</button>
+    <br>
+
+    <br>
+    <button class = "heads-button" onclick = "changeDisplay('heads');">heads</button>
+    <button class = "tails-button" onclick = "changeDisplay('tails');">tails</button>
+    <p class = "select-response" style = "color: white;"></p>
+    <br>
+
+    <br>
+    <input class = "name-input" placeholder = "Name" onkeydown = "handleCodeKeyDown(event);">
+    <button class = "submit-button" onclick = "displayName();">Submit</button>
+    <p class = "name-response" style = "color: white;"></p>
+    <br>
+
+    <br>
+    <input class = "typewriter-input" placeholder = "Type Anything" onkeyup = "document.querySelector('.typewriter-response').innerHTML = (document.querySelector('.typewriter-input')).value">
+    <p class = "typewriter-response" style = "color: white; font-size: 15px;"></p>
+
     <script>
+      console.log(document.querySelector('button'));
+      document.querySelector('.b2').innerHTML = '9b - Alternate';
+
+      function changeDisplay(userSelect){
+        if(userSelect === "heads"){
+          document.querySelector('.select-response').innerHTML = "Selected - HEADS";
+        }else if(userSelect === "tails"){
+          document.querySelector('.select-response').innerHTML = "Selected - TAILS";
+        }
+      }
+
+      function displayName(){
+        if((document.querySelector('.name-input')).value){
+          document.querySelector('.name-response').innerHTML = `What kinda name is ${(document.querySelector('.name-input')).value}?`;
+        }
+      }
+
+      function handleCodeKeyDown(event){
+        if(event.key === 'Enter'){
+          displayName();
+        }
+      }
+
+      /*
       console.log(document.querySelector("button").innerHTML);
       document.querySelector("button").innerHTML = "Changed";
 
       const buttonElement = document.querySelector('.js-button');
       console.log(buttonElement);
+      */
 
       /*
       console.log(document.title);
@@ -24,6 +72,7 @@
       console.log(document.body.innerHTML);
       document.body.innerHTML = "<button>Good Job!</button>";
       */
+     
 
       /*
       document.body.innerHTML = 'Hello';
