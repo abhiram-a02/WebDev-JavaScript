@@ -1,3 +1,4 @@
+<!--Tutorial #10 - Implementing HTML & CSS: Exercises-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -67,6 +68,7 @@
       .calc-button{
         background-color: green;
         color: white;
+        font-family: Arial;
         
         border: none;
 
@@ -76,6 +78,11 @@
 
       .incorrectElement{
         color: red;
+        font-family: Arial;
+        font-size: 15px;
+      }
+
+      .return-statement{
         font-family: Arial;
         font-size: 15px;
       }
@@ -99,7 +106,7 @@
     <br>
     <input placeholder = "Enter Price" class = "price-input">
     <button class = "calc-button" onclick = "checkPrice();">Calculate</button>
-    <p class = "return-statement">---</p>
+    <p class = "return-statement"></p>
 
     <script>
       /*
@@ -128,14 +135,15 @@
 
 
       function checkPrice(){
-        console.log("HELLO");
         if(Number((document.querySelector('.price-input')).value) < 0){
           document.querySelector('.return-statement').innerHTML = "Error: Cost cannot be less than 0!";
           document.querySelector('.return-statement').classList.add('incorrectElement');
         }else if(Number((document.querySelector('.price-input')).value) > 40){
           document.querySelector('.return-statement').innerHTML = `Cost: $${(document.querySelector('.price-input')).value}`;
+          document.querySelector('.return-statement').classList.remove('incorrectElement');
         }else{
           document.querySelector('.return-statement').innerHTML = `Cost: $${Number((document.querySelector('.price-input')).value) + 10}`;
+          document.querySelector('.return-statement').classList.remove('incorrectElement');
         }
       }
 
