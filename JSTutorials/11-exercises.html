@@ -1,4 +1,4 @@
-<!--Tutorial #11 - Arrays & Loops: Exercises #1-->
+<!--Tutorial #11 - Arrays & Loops: Exercises-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +6,7 @@
   </head>
   <body>
     <script>
+      /*
       const nums = [10, 20, 30];
       nums[2] = 99;
       console.log(nums);
@@ -86,6 +87,100 @@
         console.log(wordCount);
       }
       countWords(['apple', 'banana', 'apple', 'orange', 'banana', 'apple']);
+      */
+
+      const wordsArr = ['hello', 'world', 'search', 'good', 'search'];
+      let foundIndex = -1;
+      for(let iterator = 0; iterator < wordsArr.length; iterator++){
+        if(wordsArr[iterator] === "search"){
+          foundIndex = iterator;
+          break;
+        }
+      }
+      console.log(foundIndex);
+
+
+      function findIndex(arrayPassed, word){
+        for(let iterator = 0; iterator < arrayPassed.length; iterator++){
+          if(arrayPassed[iterator] === word){
+            return iterator;
+          }
+        }
+        return -1;
+      }
+      console.log(findIndex(['green', 'red', 'blue', 'red'], 'red'));
+      console.log(findIndex(['green', 'red', 'blue', 'red'], 'yellow'));
+
+
+      function removeEgg(foodsPassed){
+        let eggFree = [];
+        for(let iterator = 0; iterator < foodsPassed.length; iterator++){
+          if(foodsPassed[iterator] === 'egg'){
+            continue;
+          }else{
+            eggFree.push(foodsPassed[iterator]);
+          }
+        }
+        return eggFree;
+      }
+      console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+      function removeEggUpdated(foodsPassed){
+        let eggFree = [];
+        let eggCount = 0;
+        for(let iterator = 0; iterator < foodsPassed.length; iterator++){
+          if(foodsPassed[iterator] === 'egg' && eggCount < 2){
+            eggCount++;
+            continue;
+          }else{
+            eggFree.push(foodsPassed[iterator]);
+          }
+        }
+        return eggFree;
+      }
+      console.log(removeEggUpdated(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+      function removeEggReversed(foodsPassed){
+        const foodsReversed = foodsPassed.reverse();
+        let eggFree = [];
+        let eggCount = 0;
+        for(let iterator = 0; iterator < foodsReversed.length; iterator++){
+          if(foodsReversed[iterator] === 'egg' && eggCount < 2){
+            eggCount++;
+            continue;
+          }else{
+            eggFree.push(foodsReversed[iterator]);
+          }
+        }
+        return eggFree.reverse();
+      }
+      console.log(removeEggReversed(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+      for(let iterator = 1; iterator <= 20; iterator++){
+        let returnStatement = '';
+        if((iterator % 3) === 0){returnStatement += 'Fizz';}
+        if((iterator % 5) === 0){returnStatement += 'Buzz';}
+
+        if(returnStatement === ''){
+          console.log(iterator);
+        }else{
+          console.log(returnStatement);
+        }
+      }
+
+      function uniqueArray(arrayPassed){
+        let finalizedArray = []
+        for(let iterator = 0; iterator < arrayPassed.length; iterator++){
+          if(findIndex(finalizedArray, arrayPassed[iterator]) === -1){
+            finalizedArray.push(arrayPassed[iterator]);
+          }else{
+            continue;
+          }
+        }
+        return finalizedArray;
+      }
+      console.log(uniqueArray(['green', 'red', 'blue', 'red']));
+      console.log(uniqueArray(['red', 'green', 'green', 'red']));
     </script>
   </body>
 </html>
