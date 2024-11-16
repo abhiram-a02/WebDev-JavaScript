@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML, CSS, & JavaScript Practice</title>
+    <style>
+      button{
+        font: Arial;
+      }
+
+      .amazon-button{
+        background-color: rgb(255, 216, 20);
+        
+        padding: 10px 40px;
+        border: none;
+        border-radius: 20px;
+
+        font-family: Arial;
+        font-size: 15px;
+      }
+
+      .request-button{
+        background-color: black;
+        color: white;
+
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+
+        font-family: Arial;
+      }
+
+      .schedule-button{
+        background-color: rgb(230, 230, 230);
+        color: black;
+
+        padding: 11px 15px;
+        border: none;
+        border-radius: 5px;
+
+        margin-left: 20px;
+
+        font-family: Arial;
+        font-weight: bold;
+      }
+
+      .loadout-button{
+        background-color: black;
+        color: white;
+
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+
+        cursor: pointer;
+      }
+
+      .is-toggled{
+        background-color: rgb(230, 230, 230);
+        color: black;
+      }
+
+      .price-input{
+        height: 30px;
+        width: 200px;
+      }
+
+      .calc-button{
+        background-color: green;
+        color: white;
+        
+        border: none;
+
+        height: 36px;
+        width: 80px;
+      }
+
+      .incorrectElement{
+        color: red;
+        font-family: Arial;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <button class = "amazon-button">Add to Cart</button>
+    <br>
+
+    <br>
+    <button class = "request-button">Request Now</button>
+    <button class = "schedule-button">Schedule for Later</button>
+    <br>
+
+    <br>
+    <button class = "js-loadout1-button loadout-button" onclick = "toggleButton2('loadout1');">Loadout 1</button>
+    <button class = "js-loadout2-button loadout-button" onclick = "toggleButton2('loadout2');">Loadout 2</button>
+    <button class = "js-loadout3-button loadout-button" onclick = "toggleButton2('loadout3');">Loadout 3</button>
+    <br>
+
+    <br>
+    <input placeholder = "Enter Price" class = "price-input">
+    <button class = "calc-button" onclick = "checkPrice();">Calculate</button>
+    <p class = "return-statement">---</p>
+
+    <script>
+      /*
+      function toggleButton(buttonName){
+        if(document.querySelector(`.js-${buttonName}-button`).classList.contains('is-toggled')){
+          document.querySelector(`.js-${buttonName}-button`).classList.remove('is-toggled');
+        }else{
+          document.querySelector(`.js-${buttonName}-button`).classList.add('is-toggled');
+        }
+      }
+      */
+
+      document.querySelector('.js-loadout1-button').classList.remove('is-toggled');
+      document.querySelector('.js-loadout2-button').classList.add('is-toggled');
+      document.querySelector('.js-loadout3-button').classList.add('is-toggled');
+
+      function toggleButton2(buttonName){
+        const buttonSelected = document.querySelector(`.js-${buttonName}-button`)
+
+        document.querySelector('.js-loadout1-button').classList.add('is-toggled');
+        document.querySelector('.js-loadout2-button').classList.add('is-toggled');
+        document.querySelector('.js-loadout3-button').classList.add('is-toggled');
+
+        buttonSelected.classList.remove('is-toggled');
+      }
+
+
+      function checkPrice(){
+        console.log("HELLO");
+        if(Number((document.querySelector('.price-input')).value) < 0){
+          document.querySelector('.return-statement').innerHTML = "Error: Cost cannot be less than 0!";
+          document.querySelector('.return-statement').classList.add('incorrectElement');
+        }else if(Number((document.querySelector('.price-input')).value) > 40){
+          document.querySelector('.return-statement').innerHTML = `Cost: $${(document.querySelector('.price-input')).value}`;
+        }else{
+          document.querySelector('.return-statement').innerHTML = `Cost: $${Number((document.querySelector('.price-input')).value) + 10}`;
+        }
+      }
+
+    </script>
+  </body>
+</html>
