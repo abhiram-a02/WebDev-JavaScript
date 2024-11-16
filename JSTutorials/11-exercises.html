@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arrays & Loops Exercises</title>
+  </head>
+  <body>
+    <script>
+      const nums = [10, 20, 30];
+      nums[2] = 99;
+      console.log(nums);
+
+      function getLastValue(arrayPassed){
+        console.log(arrayPassed[arrayPassed.length - 1]);
+      }
+      getLastValue([1, 20, 22, 24, 5]);
+      getLastValue(['hi', 'hello', 'good']);
+
+      function arraySwap(arrayPassed){
+        const tempVal = arrayPassed[0];
+        arrayPassed[0] = arrayPassed[arrayPassed.length - 1];
+        arrayPassed[arrayPassed.length - 1] = tempVal;
+        console.log(arrayPassed);
+      }
+      arraySwap([1, 20, 22, 24, 5]);
+
+      for(let i = 0; i <= 10; i += 2){console.log(i);}
+      for(let i = 5; i >= 0; i--){console.log(i);}
+
+      function addOne(arrayPassed){
+        for(let i = 0; i < arrayPassed.length; i++){
+          arrayPassed[i]++;
+        }
+      }
+      addOne(nums);
+      console.log(nums);
+
+      function addNum(arrayPassed, numPassed){
+        for(let i = 0; i < arrayPassed.length; i++){
+          arrayPassed[i] += numPassed;
+        }
+      }
+      const randNums = [2, 34, 76, 12, 45];
+      addNum(randNums, 5);
+      console.log(randNums);
+
+      function countPositive(arrayPassed){
+        let positiveNums = 0;
+        for(let i = 0; i < arrayPassed.length; i++){
+          if(arrayPassed[i] > 0){
+            positiveNums++;
+          }
+        }
+        console.log(positiveNums);
+      }
+      countPositive([-2, 3, -5, 7, 10]);
+      
+
+      function minMax(arrayPassed){
+        const arrayInfo = {min: arrayPassed[0], max: arrayPassed[0]};
+        if(arrayPassed.length > 0){
+          for(let i = 0; i < arrayPassed.length; i++){
+            if(arrayPassed[i] < arrayInfo.min){arrayInfo.min = arrayPassed[i];}
+            if(arrayPassed[i] > arrayInfo.max){arrayInfo.max = arrayPassed[i];}
+          }
+        }else{
+          arrayInfo.min = null;
+          arrayInfo.max = null;
+        }
+        console.log(arrayInfo);
+      }
+      minMax([1, -3, 5]);
+      minMax([-2, 3, -5, 7, 10]);
+      minMax([]);
+      minMax([3]);
+
+      function countWords(arrayPassed){
+        const wordCount = {};
+        for(let i = 0; i < arrayPassed.length; i++){
+          if(wordCount[arrayPassed[i]]){
+            wordCount[arrayPassed[i]]++;
+          }else{
+            wordCount[arrayPassed[i]] = 1;
+          }
+        }
+        console.log(wordCount);
+      }
+      countWords(['apple', 'banana', 'apple', 'orange', 'banana', 'apple']);
+    </script>
+  </body>
+</html>
