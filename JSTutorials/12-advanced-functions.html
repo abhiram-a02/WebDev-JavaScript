@@ -10,7 +10,8 @@
       <p class = "js-add-song-text" style = "display: inline; vertical-align: middle;"></p>
     </div>
     <button class = "js-add-message-button" onclick = "updateMessage('+');">Add</button>
-    <button class = "js-remove-message-button" onclick = "updateMessage('-');">Remove</button>
+    <button class = "js-remove-message-button" onclick = "updateMessage('-');">Remove</button><br>
+    <button class = "js-click-button" onclick = "">Click</button>
     <script>
       /*
       function greeting(){
@@ -123,6 +124,45 @@
           numMessages--;
         }
       }
+
+      /*
+      const regularFunction = function(param, param2){
+        console.log("Hello Neptune");
+        return 5;
+      };
+
+      const arrowFunction = (param, param2) => {
+        console.log("Hello Pluto!");
+        return 5;
+      };
+      arrowFunction(1, 2);
+
+      const oneParam = param => {
+        console.log(param + 1);
+      };
+      oneParam(2);
+
+      const oneLine = () => 2 + 3;
+      console.log(oneLine());
+      
+      [
+        'Do Laundry',
+        'Wash Dishes',
+        'Clean Garage'
+      ].forEach((value, index) => {
+        if(value === 'Wash Dishes'){
+          return;
+        }
+      });
+      */
+
+      const buttonElement = document.querySelector('.js-click-button');
+      const eventListener = () => {console.log('click');};
+      buttonElement.addEventListener('click', eventListener);
+      buttonElement.removeEventListener('click', eventListener);
+      buttonElement.addEventListener('click', () => {
+        console.log('click2');
+      });
     </script>
   </body>
 </html>

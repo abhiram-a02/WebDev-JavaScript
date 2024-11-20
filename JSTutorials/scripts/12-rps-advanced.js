@@ -6,9 +6,12 @@ let score = JSON.parse(localStorage.getItem('score')) || {
 
 updateScoreElement();
 
+let isAutoPlaying = false;
+let intervalId;
+
 function autoPlay(){
   if(!isAutoPlaying){
-    intervalId = setInterval(function(){
+    intervalId = setInterval(() => {
       const playerMove = pickCPUMove();
       playGame(playerMove);
     }, 2000);
@@ -19,8 +22,19 @@ function autoPlay(){
   }
 }
 
-let isAutoPlaying = false;
-let intervalId;
+document.querySelector('.js-rock-button').addEventListener('click', () => {playGame('Rock');});
+document.querySelector('.js-paper-button').addEventListener('click', () => {playGame('Paper');});
+document.querySelector('.js-scissors-button').addEventListener('click', () => {playGame('Scissors');});
+
+document.body.addEventListener('keydown', (event) => {
+  if(event.key === 'r'){
+    playGame('Rock');
+  }else if(event.key === 'p'){
+    playGame('Paper');
+  }else if(event.key === 's'){
+    playGame('Scissors');
+  }
+});
 
 function playGame(userMove){
 let result = '';
