@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Advanced Functions</title>
+    <title class = "js-title">Advanced Functions</title>
   </head>
   <body>
     <button class = "js-start-button" onclick = "changeButton();">Start</button><br>
@@ -9,6 +9,8 @@
       <button class = "js-add-song-button" onclick = "addSong();">Add Song</button>
       <p class = "js-add-song-text" style = "display: inline; vertical-align: middle;"></p>
     </div>
+    <button class = "js-add-message-button" onclick = "updateMessage('+');">Add</button>
+    <button class = "js-remove-message-button" onclick = "updateMessage('-');">Remove</button>
     <script>
       /*
       function greeting(){
@@ -94,11 +96,32 @@
         }, 3000);
       }
 
+      let timeoutId;
       function addSong(){
+        clearTimeout(timeoutId);
         document.querySelector('.js-add-song-text').innerHTML = "Added";
-        setTimeout(function(){
+        timeoutId = setTimeout(function(){
           document.querySelector('.js-add-song-text').innerHTML = "";
         }, 2000);
+      }
+
+      let showMessages = false;
+      setInterval(function(){
+        if(showMessages === true){
+          document.querySelector('.js-title').innerHTML = "Advanced Functions";
+        }else if(numMessages > 0){
+          document.querySelector('.js-title').innerHTML = `(${numMessages}) New Messages`;
+        }
+        showMessages = !showMessages;
+      }, 1500);
+
+      let numMessages = 1;
+      function updateMessage(buttonPressed){
+        if(buttonPressed === '+'){
+          numMessages++;
+        }else if(buttonPressed === '-'){
+          numMessages--;
+        }
       }
     </script>
   </body>
