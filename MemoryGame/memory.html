@@ -4,8 +4,29 @@
     <title>Memory Match</title>
     <style>
       body{
-        background-color: rgb(25, 25, 25);
+        background-color: rgb(82, 82, 82);
         display: flex;
+        flex-direction: column;
+      }
+
+      .header{
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        margin-bottom: 25px;
+
+        color: white;
+        font-family: Arial;
+        font-size: 20px;
+      }
+
+      .js-grid-space{
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -29,6 +50,8 @@
         align-items: center;
 
         border: none;
+
+        background-color: rgb(25, 25, 25);
       }
 
       .album-image{
@@ -36,10 +59,24 @@
         max-height: 115%; 
         object-fit: cover;
       }
+
+      .js-result-text{
+        margin-left: 50px;
+      }
+
+      .js-time-text{
+        margin-right: 50px;
+      }
     </style>
   </head>
   <body>
-    <div class = "js-memory-grid"></div>
+    <div class = "header">
+      <p class = "js-result-text"></p>
+      <p class = "js-time-text">Time: 1:00</p>
+    </div>
+    <div class = "js-grid-space">
+      <div class = "js-memory-grid"></div>
+    </div>
     <script>
       let albumArt = [
         ['AlbumImages/Astroworld.jpeg', 2],
@@ -96,9 +133,69 @@
         document.querySelector('.js-memory-grid').innerHTML = memoryGridHTML;
       }
 
+      
       document.querySelectorAll('.js-album-select-button').forEach((imgButton, index) => {
         imgButton.innerHTML = `<img class = "album-image" src = ${buttonAttributes[index].hidden}>`;
       });
+
+      setTimeout(() => {
+        document.querySelectorAll('.js-album-select-button').forEach((imgButton, index) => {
+          imgButton.innerHTML = ``;
+        });
+      }, 10000);
+      
+
+      
+      let firstClick, firstClickID, secondClick, secondClickID;
+      let totalTurns = 0, totalMatches = 0;
+      let isMatch = false;
+      document.querySelector('.js-result-text').innerHTML = `Turns: ${totalMatches}`;
+      document.querySelectorAll('.js-album-select-button').forEach((imgButton, index) => {
+        imgButton.addEventListener('click', () => {
+          const albumImage = buttonAttributes[index].hidden;
+          if(!firstClick && imgButton.innerHTML.trim() === ""){
+            firstClick = {albumImage, index};
+            firstClickID = imgButton;
+            imgButton.innerHTML = `<img class = "album-image" src = ${buttonAttributes[index].hidden}>`;
+          }
+
+          if(!secondClick && imgButton.innerHTML.trim() === ""){
+            secondClick = {albumImage, index};
+            secondClickID = imgButton;
+            imgButton.innerHTML = `<img class = "album-image" src = ${buttonAttributes[index].hidden}>`;
+            if(firstClick.albumImage === secondClick.albumImage && firstClick.index !== secondClick.index){
+              document.querySelector('.js-result-text').innerHTML = `Match!`;
+              document.querySelector('.js-result-text').style.color = `lightgreen`;
+              totalMatches++;
+              isMatch = true;
+            }
+
+            turnResult();
+          }
+        });
+      });
+
+      function turnResult(){
+        console.log("Hello");
+        setTimeout(() => {
+          if(isMatch === true){
+            firstClick = null;
+            secondClick = null;
+            isMatch = false;
+          }else{
+            firstClick = null;
+            secondClick = null;
+            firstClickID.innerHTML = "";
+            secondClickID.innerHTML = "";
+          }
+          document.querySelector('.js-result-text').innerHTML = `Turns: ${++totalTurns}`;
+          document.querySelector('.js-result-text').style.color = `white`;
+        }, 2000);
+      }
+
+      
+      
+
     </script>
   </body>
 </html>
