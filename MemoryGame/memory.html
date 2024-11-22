@@ -67,12 +67,20 @@
       .js-time-text{
         margin-right: 50px;
       }
+
+      .js-time-text p{
+        display: inline-block;
+      }
     </style>
   </head>
   <body>
     <div class = "header">
       <p class = "js-result-text"></p>
-      <p class = "js-time-text">Time: 1:00</p>
+      <div class = "js-time-text">
+        <p class = "js-min">00</p>
+        <p>:</p>
+        <p class = "js-sec">00</p>
+      </div>
     </div>
     <div class = "js-grid-space">
       <div class = "js-memory-grid"></div>
@@ -138,18 +146,35 @@
         imgButton.innerHTML = `<img class = "album-image" src = ${buttonAttributes[index].hidden}>`;
       });
 
-      setTimeout(() => {
+      let minute = 0;
+      let second = 0;
+      let stopwatchCounter, overallCounter;
+      overallCounter = setTimeout(() => {
         document.querySelectorAll('.js-album-select-button').forEach((imgButton, index) => {
           imgButton.innerHTML = ``;
         });
+
+        stopwatchCounter = setInterval(() => {
+          if (second == 60) {
+              minute++;
+              second = 0;
+          }
+
+          let minString = minute;
+          let secString = second;
+
+          if (minute < 10) {minString = "0" + minString;}
+          if (second < 10) {secString = "0" + secString;}
+          document.querySelector('.js-min').innerHTML = minString;
+          document.querySelector('.js-sec').innerHTML = secString;
+          second++;
+        }, 1000);
       }, 10000);
       
-
-      
       let firstClick, firstClickID, secondClick, secondClickID;
-      let totalTurns = 0, totalMatches = 0;
+      let totalTurns = 0, totalMatches = 26;
       let isMatch = false;
-      document.querySelector('.js-result-text').innerHTML = `Turns: ${totalMatches}`;
+      document.querySelector('.js-result-text').innerHTML = `Turns: ${totalTurns}`;
       document.querySelectorAll('.js-album-select-button').forEach((imgButton, index) => {
         imgButton.addEventListener('click', () => {
           const albumImage = buttonAttributes[index].hidden;
@@ -168,6 +193,10 @@
               document.querySelector('.js-result-text').style.color = `lightgreen`;
               totalMatches++;
               isMatch = true;
+              console.log(totalMatches);
+              if(totalMatches === 27){
+                clearInterval(stopwatchCounter);
+              }
             }
 
             turnResult();
@@ -176,7 +205,6 @@
       });
 
       function turnResult(){
-        console.log("Hello");
         setTimeout(() => {
           if(isMatch === true){
             firstClick = null;
